@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>GymApp</title>
+  <meta name="description" content="Plan your weekly gym split: days, categories, exercises, sets, weights and reps.">
+  <meta name="theme-color" content="#0b0c0e">
+  <meta name="color-scheme" content="dark">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="GymApp">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <div id="app" class="app"></div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <div id="sheet" class="sheet" hidden>
+    <div class="sheet__backdrop" data-action="close-sheet"></div>
+    <div class="sheet__panel" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+      <div class="sheet__grip"></div>
+      <h2 id="sheet-title" class="sheet__title">Settings</h2>
+      <p class="sheet__note">Your plan is saved on this phone only. Export a backup now and then so you never lose it.</p>
+
+      <button class="sheet__row" type="button" data-action="export">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        <span><span class="sheet__label">Export backup</span><small>Save your plan as a .json file</small></span>
+      </button>
+      <button class="sheet__row" type="button" data-action="import">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+        <span><span class="sheet__label">Import backup</span><small>Replace your plan with a saved file</small></span>
+      </button>
+      <button class="sheet__row sheet__row--danger" type="button" data-action="reset">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 4v6h6M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+        <span><span class="sheet__label">Reset all data</span><small>Erase every day, exercise and set</small></span>
+      </button>
+
+      <button class="sheet__close" type="button" data-action="close-sheet">Done</button>
+      <input id="import-file" type="file" accept=".json,application/json" hidden>
+    </div>
+  </div>
+
+  <noscript>GymApp needs JavaScript to run.</noscript>
+</body>
+</html>
